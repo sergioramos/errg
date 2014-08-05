@@ -1,0 +1,31 @@
+{
+  "name": "ycatch",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/ramitos/ycatch",
+  "bugs": {
+    "url": "http://github.com/ramitos/ycatch/issues",
+    "email": "mail@sergioramos.me"
+  },
+  "license": {
+    "url": "https://raw.github.com/ramitos/ycatch/master/license",
+    "type": "MIT"
+  },
+  "author": "Sérgio Ramos <mail@sergioramos.me> (http://sergioramos.me)",
+  "main": "src/ycatch.js",
+  "directories": {
+    "lib": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ramitos/ycatch.git"
+  },
+  "devDependencies": {
+    "co": "^3.1.0",
+    "thunkify": "^2.1.2"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}
