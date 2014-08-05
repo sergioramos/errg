@@ -7,7 +7,7 @@
 
 ## api
 
-``js
+```js
 var read = intercept(thunk(fs.readFile));
 var a = read('index.js', 'utf8');
 var c = read('package.json', 'utf8');
@@ -19,7 +19,7 @@ assert(res[0][1].indexOf('exports') > 0)
 assert(res[1][1].indexOf('devDependencies') > 0)
 ```
 
-``js
+```js
 function sleep(ms) {
   return function(done){
     setTimeout(done, ms);
