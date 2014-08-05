@@ -12,11 +12,11 @@ var read = intercept(thunk(fs.readFile));
 var a = read('index.js', 'utf8');
 var c = read('package.json', 'utf8');
 
-// var [[erra, a], [errb, b]] = yield [a, b]; // for when destructuring comes to node.js
-var res = yield [a, c];
-assert(res.length === 2);
-assert(res[0][1].indexOf('exports') > 0)
-assert(res[1][1].indexOf('devDependencies') > 0)
+var [[erra, a], [errb, b]] = yield [a, b];
+if(erra) throw erra;
+if(errb) throw errb;
+assert(a.indexOf('exports') > 0)
+assert(b.indexOf('devDependencies') > 0)
 ```
 
 ```js
@@ -31,21 +31,15 @@ var work = intercept(function *(){
   return 'yay';
 });
 
-var a = yield work;
-var b = yield work;
-var c = yield work;
+var [, a] = yield work;
+assert('yay' === a);
+var [, b] = yield work;
+assert('yay' === b);
+var [, c] = yield work;
+assert('yay' === c);
 
-// var [, a] = yield work;
-assert('yay' === a[1]);
-// var [, b] = yield work;
-assert('yay' === b[1]);
-// var [, c] = yield work;
-assert('yay' === c[1]);
-
-var res = yield [work, work, work];
-// var [[, a], [, b], [, c]] = yield [work, work, work];
-assert(res.length === 3);
-assert('yay' === res[0][1]);
-assert('yay' === res[1][1]);
-assert('yay' === res[2][1]);
+var [[, a], [, b], [, c]] = yield [work, work, work];
+assert('yay' === a);
+assert('yay' === b);
+assert('yay' === c);
 ```
