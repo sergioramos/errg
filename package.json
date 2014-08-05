@@ -1,17 +1,20 @@
 {
   "name": "ycatch",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "version": "1.0.1",
+  "description": "catch errors from generators, Go style",
+  "keywords": [
+    "yield",
+    "errors",
+    "destructuring",
+    "destruct",
+    "async"
+  ],
   "homepage": "https://github.com/ramitos/ycatch",
   "bugs": {
     "url": "http://github.com/ramitos/ycatch/issues",
     "email": "mail@sergioramos.me"
   },
-  "license": {
-    "url": "https://raw.github.com/ramitos/ycatch/master/license",
-    "type": "MIT"
-  },
+  "license": "MIT",
   "author": "Sérgio Ramos <mail@sergioramos.me> (http://sergioramos.me)",
   "main": "src/ycatch.js",
   "directories": {
