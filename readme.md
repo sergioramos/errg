@@ -2,8 +2,9 @@
 
 ![](http://img.shields.io/npm/v/ycatch.svg?style=flat)
 ![](http://img.shields.io/npm/l/ycatch.svg?style=flat)
-![](http://img.shields.io/travis/ramitos/ycatch.svg?style=flat)
 ![](http://img.shields.io/badge/stability-experimental-orange.svg?style=flat)
+
+Probably useless until node has [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment). It can be used without it though.
 
 ## api
 
