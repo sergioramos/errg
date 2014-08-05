@@ -11,7 +11,7 @@ Probably useless until node has [destructuring assignment](https://developer.moz
 ## api
 
 ```js
-var read = intercept(thunk(fs.readFile));
+var read = ycatch(thunk(fs.readFile));
 var a = read('index.js', 'utf8');
 var c = read('package.json', 'utf8');
 
@@ -29,7 +29,7 @@ function sleep(ms) {
   };
 }
 
-var work = intercept(function *(){
+var work = ycatch(function *(){
   yield sleep(50);
   return 'yay';
 });
