@@ -1,48 +1,39 @@
-# ycatch
+# errg
 
-![](http://img.shields.io/npm/v/ycatch.svg?style=flat)
-
-![](http://img.shields.io/npm/l/ycatch.svg?style=flat)
-
-![](http://img.shields.io/badge/stability-experimental-orange.svg?style=flat)
-
-Probably useless until node has [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment). It can be used without it though.
+[![](https://img.shields.io/travis/ramitos/errg.svg)](https://travis-ci.org/ramitos/errg) [![](https://img.shields.io/codeclimate/coverage/github/ramitos/errg.svg)](https://codeclimate.com/github/ramitos/errg/coverage) [![](https://img.shields.io/npm/v/errg.svg)](https://www.npmjs.com/package/errg) [![](https://img.shields.io/david/ramitos/errg.svg)](https://david-dm.org/ramitos/errg) [![](https://img.shields.io/codeclimate/github/ramitos/errg.svg)](https://codeclimate.com/github/ramitos/errg) [![](https://img.shields.io/npm/l/errg.svg)](https://www.npmjs.com/package/errg)
 
 ## api
 
 ```js
-var read = ycatch(thunk(fs.readFile));
-var a = read('index.js', 'utf8');
-var c = read('package.json', 'utf8');
+var errg = require('errg/es5');
+// errg/es6 and errg/es7 also possible
 
-var [[erra, a], [errb, b]] = yield [a, b];
-if(erra) throw erra;
-if(errb) throw errb;
-assert(a.indexOf('exports') > 0)
-assert(b.indexOf('devDependencies') > 0)
+var read = async function() {
+  // some async op
+  throw err;
+};
+
+var main = async function() {
+  var [err, res] = await errg(read());
+  if (err) {
+    throw err;
+  }
+  
+  // ignoring err
+  var [, res] = await errg(read());
+  
+  // traditional try/catch
+  try {
+    var res = read();
+  } catch(err) {
+    // got the err here
+  }
+  
+  // bubble err
+  var res = read();
+};
 ```
 
-```js
-function sleep(ms) {
-  return function(done){
-    setTimeout(done, ms);
-  };
-}
+## license
 
-var work = ycatch(function *(){
-  yield sleep(50);
-  return 'yay';
-});
-
-var [, a] = yield work;
-assert('yay' === a);
-var [, b] = yield work;
-assert('yay' === b);
-var [, c] = yield work;
-assert('yay' === c);
-
-var [[, a], [, b], [, c]] = yield [work, work, work];
-assert('yay' === a);
-assert('yay' === b);
-assert('yay' === c);
-```
+MIT

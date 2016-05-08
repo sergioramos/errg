@@ -1,0 +1,15 @@
+sudo: false
+language: node_js
+node_js:
+    - 6
+    - 5
+    - 4
+    - 0.12
+    - 0.10
+script:
+    - npm test
+    - npm run lint
+addons:
+  code_climate:
+    repo_token: bbc4c8d46a71cb523379d9ed4e1f2b50cf35ee16d41c045d00c2ccbf12c009e9
+after_success: npm run coverage

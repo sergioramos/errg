@@ -51,3 +51,6 @@ Session.vim
 # subl
 
 *.sublime-workspace
+
+!src
+build
